@@ -1,38 +1,129 @@
 .min-vh-100 {
-    min-height: 100vh;
+  min-height: 100vh;
 }
 
 .card {
-    border-radius: 15px;
-    border: none;
+  border-radius: 15px;
+  border: none;
 }
 
 .card-header {
-    border-radius: 15px 15px 0 0 !important;
-    border: none;
+  border-radius: 15px 15px 0 0 !important;
+  border: none;
 }
 
 .form-control:focus {
-    border-color: #2a9d8f;
-    box-shadow: 0 0 0 0.25rem rgba(42, 157, 143, 0.25);
+  border-color: #2a9d8f;
+  box-shadow: 0 0 0 0.25rem rgba(42, 157, 143, 0.25);
 }
 
 .btn-primary {
-    background-color: #2a9d8f;
-    border-color: #2a9d8f;
+  background-color: #2a9d8f;
+  border-color: #2a9d8f;
 }
 
 .btn-primary:hover {
-    background-color: #21867a;
-    border-color: #21867a;
+  background-color: #21867a;
+  border-color: #21867a;
 }
 
 .btn-success {
-    background-color: #28a745;
-    border-color: #28a745;
+  background-color: #28a745;
+  border-color: #28a745;
 }
 
 .alert {
-    border-radius: 10px;
-    border: none;
+  border-radius: 10px;
+  border: none;
+}
+
+/* Sidebar Styles */
+#wrapper {
+  display: flex;
+}
+
+#sidebar-wrapper {
+  min-height: 100vh;
+  transition: margin 0.25s ease-out;
+}
+
+#page-content-wrapper {
+  min-width: 0;
+  width: 100%;
+}
+
+#wrapper.toggled #sidebar-wrapper {
+  margin-left: -250px;
+}
+
+.sidebar-divider {
+  border-top: 1px solid #495057;
+  margin: 0 1rem;
+}
+
+/* Card Improvements */
+.card {
+  border-radius: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+}
+
+.card-header {
+  border-radius: 10px 10px 0 0 !important;
+}
+
+/* Table Improvements */
+.table-hover tbody tr:hover {
+  background-color: rgba(42, 157, 143, 0.1);
+}
+
+/* Button Improvements */
+.btn-group .btn {
+  margin-right: 5px;
+}
+
+.btn-group .btn:last-child {
+  margin-right: 0;
+}
+
+/* Modal Improvements */
+.modal-content {
+  border-radius: 10px;
+}
+
+/* Alert Improvements */
+.alert {
+  border-radius: 8px;
+  border: none;
+}
+
+/* Progress Bar */
+.progress {
+  border-radius: 5px;
+}
+
+/* DataTables Customization */
+.dataTables_wrapper .dataTables_filter input {
+  border-radius: 5px;
+  padding: 5px 10px;
+  border: 1px solid #dee2e6;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button {
+  border-radius: 5px !important;
+  margin: 0 2px;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  #sidebar-wrapper {
+    margin-left: -250px;
+  }
+
+  #wrapper.toggled #sidebar-wrapper {
+    margin-left: 0;
+  }
+
+  .navbar-brand {
+    font-size: 1rem;
+  }
 }
