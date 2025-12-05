@@ -4,6 +4,8 @@ require_once 'connection.php';
 
 $conn = getConnection();
 
+$uid = $_SESSION["user_id"];
+
 // Get search term
 $search = isset($_GET['search']['value']) ? $conn->real_escape_string($_GET['search']['value']) : '';
 $start = isset($_GET['start']) ? intval($_GET['start']) : 0;
@@ -15,6 +17,12 @@ if (!empty($search)) {
     $where .= " AND (location LIKE '%{$search}%' OR description LIKE '%{$search}%')";
 }
 
+if ($uid == 1) {
+    $uid_search = "";
+} else {
+    $uid_search = "AND owner = $uid";
+}
+
 // Get total records
 $total_query = "SELECT COUNT(*) as total FROM plot WHERE is_deleted = FALSE";
 $total_result = $conn->query($total_query);
@@ -22,13 +30,13 @@ $total_data = $total_result->fetch_assoc();
 $total = $total_data['total'];
 
 // Get filtered count
-$filtered_query = "SELECT COUNT(*) as filtered FROM plots $where";
+$filtered_query = "SELECT COUNT(*) as filtered FROM plot $where";
 $filtered_result = $conn->query($filtered_query);
 $filtered_data = $filtered_result->fetch_assoc();
 $filtered = $filtered_data['filtered'];
 
 // Get data
-$query = "SELECT * FROM plots $where ORDER BY created_at DESC LIMIT $start, $length";
+$query = "SELECT * FROM plot $where $uid_search ORDER BY create_date DESC LIMIT $start, $length";
 $result = $conn->query($query);
 
 $data = [];
@@ -37,8 +45,8 @@ while ($row = $result->fetch_assoc()) {
         'id' => $row['id'],
         'location' => htmlspecialchars($row['location']),
         'description' => htmlspecialchars($row['description']),
-        'created_at' => date('Y-m-d H:i', strtotime($row['created_at'])),
-        'updated_at' => date('Y-m-d H:i', strtotime($row['updated_at'])),
+        'create_date' => date('Y-m-d H:i', strtotime($row['create_date'])),
+        'update_date' => date('Y-m-d H:i', strtotime($row['update_date'])),
         'actions' => $row['id'] // Will be processed in JavaScript
     ];
 }

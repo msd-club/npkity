@@ -6,7 +6,8 @@ require_once 'api/connection.php';
 $conn = getConnection();
 
 // Total plots
-$plot_result = $conn->query("SELECT COUNT(*) as total FROM plots WHERE is_deleted = FALSE");
+echo $_SESSION["user_id"];
+$plot_result = $conn->query("SELECT COUNT(*) as total FROM plot WHERE is_deleted = FALSE");
 $total_plots = $plot_result->fetch_assoc()['total'];
 
 // Total samples (we'll create this table later, for now mock data)

@@ -1,6 +1,4 @@
 <?php
-include "database_variables.php";
-
 session_start();
 
 // Database configuration

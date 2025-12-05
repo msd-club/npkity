@@ -32,14 +32,14 @@ $(document).ready(function() {
                 }
             },
             { 
-                data: 'created_at',
+                data: 'create_date',
                 className: 'text-center',
                 render: function(data) {
                     return `<span class="badge bg-secondary">${data}</span>`;
                 }
             },
             { 
-                data: 'updated_at',
+                data: 'update_date',
                 className: 'text-center',
                 render: function(data) {
                     return `<span class="badge bg-info">${data}</span>`;

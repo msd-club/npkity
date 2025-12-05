@@ -5,6 +5,7 @@ require_once 'connection.php';
 $response = ['success' => false, 'message' => ''];
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $user_id = $_SESSION['user_id'];
     $location = trim($_POST['location'] ?? '');
     $description = trim($_POST['description'] ?? '');
 
@@ -16,8 +17,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $conn = getConnection();
 
-    $stmt = $conn->prepare("INSERT INTO plot (location, description) VALUES (?, ?)");
-    $stmt->bind_param("ss", $location, $description);
+    $stmt = $conn->prepare("INSERT INTO plot (location, description, owner) VALUES (?, ?, ?)");
+    $stmt->bind_param("sss", $location, $description, $user_id);
 
     if ($stmt->execute()) {
         $response['success'] = true;
