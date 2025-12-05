@@ -21,8 +21,4 @@ $current_page = basename($_SERVER['PHP_SELF']);
 			<i class='bx bx-map me-2'></i> Plots
 		</a>
 	</div>
-
-	<div class="sidebar-footer mt-auto p-3 bg-dark text-center border-top">
-		<small class="text-muted">NPK Sensor v1.0</small>
-	</div>
 </div>

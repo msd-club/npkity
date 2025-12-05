@@ -52,10 +52,6 @@ $extra_scripts = $extra_scripts ?? '';
                         <i class='bx bx-menu'></i>
                     </button>
 
-                    <div class="navbar-brand d-none d-md-block">
-                        <i class='bx bx-leaf'></i> NPK Sensor Web UI
-                    </div>
-
                     <div class="navbar-nav ms-auto">
                         <div class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle text-white" href="#" role="button"
@@ -63,12 +59,12 @@ $extra_scripts = $extra_scripts ?? '';
                                 <i class='bx bx-user'></i> <?php echo htmlspecialchars($_SESSION['username']); ?>
                             </a>
                             <ul class="dropdown-menu dropdown-menu-end">
-                                <li><a class="dropdown-item" href="#">
+                                <!-- <li><a class="dropdown-item" href="#">
                                         <i class='bx bx-cog'></i> Settings
                                     </a></li>
                                 <li>
                                     <hr class="dropdown-divider">
-                                </li>
+                                </li> -->
                                 <li><a class="dropdown-item" href="logout.php">
                                         <i class='bx bx-log-out'></i> Logout
                                     </a></li>
