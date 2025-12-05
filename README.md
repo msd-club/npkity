@@ -7,18 +7,21 @@ A comprehensive web-based NPK (Nitrogen, Phosphorus, Potassium) sensor monitorin
 ## 🚀 Features
 
 ### ✅ User Authentication
+
 - Login with username/email and password
 - User registration with email, username, and password confirmation
 - Session-based authentication
 - Secure password hashing
 
 ### 📊 Dashboard
+
 - Real-time statistics display (Total Plots, Total Samples, Average Nutrients)
 - Recent activity tracking
 - System health monitoring
 - Top performing plots visualization
 
 ### 🗺️ Plots Management
+
 - Complete CRUD operations for agricultural plots
 - DataTables integration with server-side processing
 - Search and filter functionality
@@ -26,6 +29,7 @@ A comprehensive web-based NPK (Nitrogen, Phosphorus, Potassium) sensor monitorin
 - Modal-based forms for add/edit operations
 
 ### 🎨 User Interface
+
 - Clean, modern Bootstrap 5 design
 - Boxicons for beautiful icons
 - Responsive sidebar navigation
@@ -42,6 +46,7 @@ npk_sensor_web_ui/
 ├── logout.php                # Logout handler
 ├── api/
 │   ├── connection.php        # Database connection
+│   ├── database_variables.php# Storage of database credentials for easier editing
 │   ├── user_login.php        # User login API
 │   ├── user_register.php     # User registration API
 │   ├── plot_create.php       # Create new plot
@@ -64,12 +69,14 @@ npk_sensor_web_ui/
 ### SQL Queries
 
 #### 1. Create Database
+
 ```sql
 CREATE DATABASE IF NOT EXISTS npk_database;
 USE npk_database;
 ```
 
 #### 2. Users Table
+
 ```sql
 CREATE TABLE IF NOT EXISTS users (
     id INT(11) PRIMARY KEY AUTO_INCREMENT,
@@ -82,6 +89,7 @@ CREATE TABLE IF NOT EXISTS users (
 ```
 
 #### 3. Plots Table
+
 ```sql
 CREATE TABLE IF NOT EXISTS plots (
     id INT(11) PRIMARY KEY AUTO_INCREMENT,
@@ -97,6 +105,7 @@ CREATE TABLE IF NOT EXISTS plots (
 ## 🔧 Installation Guide
 
 ### Prerequisites
+
 - XAMPP/WAMP/MAMP or any PHP development environment
 - PHP 7.4 or higher
 - MySQL 5.7 or higher
@@ -105,18 +114,21 @@ CREATE TABLE IF NOT EXISTS plots (
 ### Step-by-Step Installation
 
 1. **Clone or download the project**
+
    ```bash
    git clone https://github.com/msd-club/npkity.git
    cd npkity
    ```
 
 2. **Setup Database**
+
    - Open phpMyAdmin or MySQL CLI
    - Create a new database named `npk_database`
    - Run all SQL queries from the "Database Schema" section above
 
 3. **Configure Database Connection**
    Edit `/api/connection.php` with your database credentials:
+
    ```php
    define('DB_HOST', 'localhost');
    define('DB_USER', 'root');
@@ -125,12 +137,14 @@ CREATE TABLE IF NOT EXISTS plots (
    ```
 
 4. **Set Up Web Server**
+
    - Place the project folder in your web server's root directory
      - XAMPP: `C:/xampp/htdocs/npkity/`
      - WAMP: `C:/wamp64/www/npkity/`
      - MAMP: `/Applications/MAMP/htdocs/npkity/`
 
 5. **Access the Application**
+
    - Open your browser and navigate to:
      ```
      http://localhost/npkity/
@@ -142,21 +156,23 @@ CREATE TABLE IF NOT EXISTS plots (
 ## 🖥️ Usage Guide
 
 ### Authentication
+
 1. **Registration**: Click "Create New Account" on the login page
    - Provide email, username, and password (min 6 characters)
    - Registration will redirect you to login page
-   
 2. **Login**: Use your registered credentials
    - Successful login redirects to dashboard
    - Invalid credentials show error message
 
 ### Dashboard
+
 - View key metrics in stat cards
 - Monitor recent activities in the table
 - Check system health indicators
 - See top performing plots
 
 ### Plots Management
+
 1. **View All Plots**: Navigate to "Plots" in sidebar
 2. **Add New Plot**: Click "Add New Plot" button
    - Fill location (required) and description (optional)
@@ -169,6 +185,7 @@ CREATE TABLE IF NOT EXISTS plots (
    - Uses soft delete (can be restored from database)
 
 ### Search & Filter
+
 - Use search box to find plots by location or description
 - Click "All Plots" or "Active Only" to filter
 - DataTables provides pagination and sorting
@@ -185,12 +202,14 @@ CREATE TABLE IF NOT EXISTS plots (
 ## 📝 API Documentation
 
 ### Authentication Endpoints
+
 ```
 POST /api/user_login.php
 POST /api/user_register.php
 ```
 
 ### Plot Management Endpoints
+
 ```
 GET  /api/plot_list.php     # List all plots (DataTables format)
 GET  /api/plot_get.php      # Get single plot by ID
@@ -200,7 +219,9 @@ POST /api/plot_delete.php   # Soft delete plot
 ```
 
 ### Request/Response Format
+
 All API endpoints return JSON:
+
 ```json
 {
     "success": true|false,
@@ -227,6 +248,7 @@ All API endpoints return JSON:
 ## 📞 Support
 
 For support, please:
+
 1. Check the troubleshooting section
 2. Review browser console for errors
 3. Verify database configuration
