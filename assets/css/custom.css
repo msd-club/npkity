@@ -1,0 +1,38 @@
+.min-vh-100 {
+    min-height: 100vh;
+}
+
+.card {
+    border-radius: 15px;
+    border: none;
+}
+
+.card-header {
+    border-radius: 15px 15px 0 0 !important;
+    border: none;
+}
+
+.form-control:focus {
+    border-color: #2a9d8f;
+    box-shadow: 0 0 0 0.25rem rgba(42, 157, 143, 0.25);
+}
+
+.btn-primary {
+    background-color: #2a9d8f;
+    border-color: #2a9d8f;
+}
+
+.btn-primary:hover {
+    background-color: #21867a;
+    border-color: #21867a;
+}
+
+.btn-success {
+    background-color: #28a745;
+    border-color: #28a745;
+}
+
+.alert {
+    border-radius: 10px;
+    border: none;
+}
