@@ -94,21 +94,6 @@ CREATE TABLE IF NOT EXISTS plots (
 );
 ```
 
-#### 4. Sample Data
-```sql
--- Default admin user (password: admin123)
-INSERT INTO users (email, username, password) 
-VALUES ('admin@npk.com', 'admin', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi');
-
--- Sample plots
-INSERT INTO plots (location, description) VALUES
-('Field A - North Section', 'Primary corn field with irrigation system'),
-('Field B - South Section', 'Vegetable garden with organic farming'),
-('Greenhouse 1', 'Hydroponic system for lettuce and herbs'),
-('Test Plot - Experimental', 'Testing different fertilizer combinations'),
-('Orchard Section', 'Fruit trees with drip irrigation');
-```
-
 ## 🔧 Installation Guide
 
 ### Prerequisites
@@ -121,8 +106,8 @@ INSERT INTO plots (location, description) VALUES
 
 1. **Clone or download the project**
    ```bash
-   git clone [repository-url]
-   cd npk_sensor_web_ui
+   git clone https://github.com/msd-club/npkity.git
+   cd npkity
    ```
 
 2. **Setup Database**
@@ -141,21 +126,18 @@ INSERT INTO plots (location, description) VALUES
 
 4. **Set Up Web Server**
    - Place the project folder in your web server's root directory
-     - XAMPP: `C:/xampp/htdocs/npk_sensor_web_ui/`
-     - WAMP: `C:/wamp64/www/npk_sensor_web_ui/`
-     - MAMP: `/Applications/MAMP/htdocs/npk_sensor_web_ui/`
+     - XAMPP: `C:/xampp/htdocs/npkity/`
+     - WAMP: `C:/wamp64/www/npkity/`
+     - MAMP: `/Applications/MAMP/htdocs/npkity/`
 
 5. **Access the Application**
    - Open your browser and navigate to:
      ```
-     http://localhost/npk_sensor_web_ui/
+     http://localhost/npkity/
      ```
 
 6. **Login Credentials**
-   - **Default Admin:**
-     - Username: `admin`
-     - Password: `admin123`
-   - Or register a new account using the registration form
+   - Register a new account using the registration form
 
 ## 🖥️ Usage Guide
 
@@ -200,92 +182,6 @@ INSERT INTO plots (location, description) VALUES
 - **CSRF Protection**: (Recommended to add tokens for production)
 - **Input Validation**: Server-side validation for all user inputs
 
-## 🚨 Troubleshooting
-
-### Common Issues
-
-1. **Database Connection Error**
-   ```
-   Solution: Check database credentials in connection.php
-   ```
-
-2. **Page Not Found (404)**
-   ```
-   Solution: Ensure project is in correct web server directory
-   ```
-
-3. **DataTables Not Loading**
-   ```
-   Solution: Check browser console for JavaScript errors
-            Verify API endpoint returns valid JSON
-   ```
-
-4. **Login Not Working**
-   ```
-   Solution: Verify users table has data
-            Check password_hash/password_verify compatibility
-   ```
-
-5. **Permission Denied Errors**
-   ```
-   Solution: Ensure web server has write permissions to project folder
-   ```
-
-### Debug Mode
-
-To enable debugging, modify `/api/connection.php`:
-```php
-// Add this after connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-} else {
-    error_log("Database connection successful");
-}
-```
-
-## 📱 Browser Compatibility
-
-- Chrome 60+
-- Firefox 60+
-- Safari 12+
-- Edge 79+
-- Opera 50+
-
-## 🔄 Future Enhancements
-
-### Planned Features
-- Sensor data integration
-- Real-time charts and graphs
-- Export data to CSV/Excel
-- User roles and permissions
-- Email notifications
-- Mobile app version
-- API for external systems
-
-### Database Extensions
-```sql
--- Future tables
-CREATE TABLE sensors (
-    id INT PRIMARY KEY AUTO_INCREMENT,
-    plot_id INT,
-    sensor_type ENUM('nitrogen', 'phosphorus', 'potassium', 'ph', 'moisture'),
-    reading_value DECIMAL(10,2),
-    reading_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (plot_id) REFERENCES plots(id)
-);
-
-CREATE TABLE alerts (
-    id INT PRIMARY KEY AUTO_INCREMENT,
-    plot_id INT,
-    alert_type VARCHAR(50),
-    message TEXT,
-    priority ENUM('low', 'medium', 'high', 'critical'),
-    status ENUM('active', 'resolved', 'acknowledged'),
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (plot_id) REFERENCES plots(id)
-);
-```
-
 ## 📝 API Documentation
 
 ### Authentication Endpoints
@@ -313,28 +209,6 @@ All API endpoints return JSON:
 }
 ```
 
-## 🧪 Testing
-
-### Manual Testing Checklist
-- [ ] User registration
-- [ ] User login/logout
-- [ ] Dashboard loads correctly
-- [ ] Plots page loads with DataTable
-- [ ] Add new plot
-- [ ] Edit existing plot
-- [ ] Delete plot
-- [ ] Search functionality
-- [ ] Responsive design on mobile
-
-### Automated Testing (To Implement)
-```bash
-# Setup PHPUnit
-composer require phpunit/phpunit
-
-# Run tests
-./vendor/bin/phpunit tests/
-```
-
 ## 🤝 Contributing
 
 1. Fork the repository
@@ -342,10 +216,6 @@ composer require phpunit/phpunit
 3. Commit changes (`git commit -m 'Add AmazingFeature'`)
 4. Push to branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
-
-## 📄 License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
 
 ## 🙏 Acknowledgments
 
