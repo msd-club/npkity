@@ -16,7 +16,7 @@ if (!empty($search)) {
 }
 
 // Get total records
-$total_query = "SELECT COUNT(*) as total FROM plots WHERE is_deleted = FALSE";
+$total_query = "SELECT COUNT(*) as total FROM plot WHERE is_deleted = FALSE";
 $total_result = $conn->query($total_query);
 $total_data = $total_result->fetch_assoc();
 $total = $total_data['total'];
@@ -52,4 +52,3 @@ echo json_encode([
     'recordsFiltered' => $filtered,
     'data' => $data
 ]);
-?>

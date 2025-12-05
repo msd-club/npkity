@@ -5,12 +5,12 @@ require_once 'connection.php';
 $response = ['success' => false, 'data' => null];
 
 if (isset($_GET['id'])) {
-    $ownerid = intval($_GET['id']);
+    $id = intval($_GET['id']);
 
     if ($id > 0) {
         $conn = getConnection();
 
-        $stmt = $conn->prepare("SELECT * FROM plots WHERE owner_id = ? AND is_deleted = FALSE");
+        $stmt = $conn->prepare("SELECT * FROM plot WHERE id = ? AND is_deleted = FALSE");
         $stmt->bind_param("i", $id);
         $stmt->execute();
         $result = $stmt->get_result();

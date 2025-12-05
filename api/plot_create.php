@@ -7,18 +7,18 @@ $response = ['success' => false, 'message' => ''];
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $location = trim($_POST['location'] ?? '');
     $description = trim($_POST['description'] ?? '');
-    
+
     if (empty($location)) {
         $response['message'] = "Location is required!";
         echo json_encode($response);
         exit();
     }
-    
+
     $conn = getConnection();
-    
-    $stmt = $conn->prepare("INSERT INTO plots (location, description) VALUES (?, ?)");
+
+    $stmt = $conn->prepare("INSERT INTO plot (location, description) VALUES (?, ?)");
     $stmt->bind_param("ss", $location, $description);
-    
+
     if ($stmt->execute()) {
         $response['success'] = true;
         $response['message'] = "Plot created successfully!";
@@ -26,11 +26,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } else {
         $response['message'] = "Failed to create plot. Please try again.";
     }
-    
+
     $conn->close();
 } else {
     $response['message'] = "Invalid request method!";
 }
 
 echo json_encode($response);
-?>
